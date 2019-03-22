@@ -363,7 +363,7 @@ namespace SqlSugar
         private string GetPropertyTypeConvert(DbColumnInfo item)
         {
             var convertString = GetProertypeDefaultValue(item);
-            if (convertString == "DateTime.Now" || convertString == null)
+            if (convertString == "DateTime.Now" || convertString == "Guid.NewGuid()" || convertString == null)
                 return convertString;
             if (item.DataType == "bit")
                 return (convertString == "1" || convertString.Equals("true",StringComparison.CurrentCultureIgnoreCase)).ToString().ToLower();
