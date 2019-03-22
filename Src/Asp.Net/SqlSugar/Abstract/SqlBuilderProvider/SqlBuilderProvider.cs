@@ -119,6 +119,7 @@ namespace SqlSugar
         {
             return " HAVING " + sqlString;
         }
+        public virtual string SqlNewGuid { get { return "NEWID()"; } }
         public virtual string SqlParameterKeyWord { get { return "@"; } }
         public abstract string SqlTranslationLeft { get; }
         public abstract string SqlTranslationRight { get; }

@@ -21,6 +21,8 @@ namespace SqlSugar
         DeleteBuilder DeleteBuilder { get; set; }
         UpdateBuilder UpdateBuilder { get; set; }
 
+        string SqlNewGuid { get; }
+
         string SqlParameterKeyWord { get; }
         string SqlFalse { get; }
         string SqlDateNow { get; }

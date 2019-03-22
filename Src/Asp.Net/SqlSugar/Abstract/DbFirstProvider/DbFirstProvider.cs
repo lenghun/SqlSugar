@@ -290,6 +290,10 @@ namespace SqlSugar
             {
                 result = "DateTime.Now";
             }
+            if (result.Equals(this.SqlBuilder.SqlNewGuid, StringComparison.CurrentCultureIgnoreCase))
+            {
+                result = "Guid.NewGuid()";
+            }
             result = result.Replace("\r", "\t").Replace("\n", "\t");
             result = result.IsIn("''","\"\"") ? string.Empty : result;
             return result;
@@ -363,7 +367,7 @@ namespace SqlSugar
         private string GetPropertyTypeConvert(DbColumnInfo item)
         {
             var convertString = GetProertypeDefaultValue(item);
-            if (convertString == "DateTime.Now" || convertString == null)
+            if (convertString == "DateTime.Now" || convertString == "Guid.NewGuid()" || convertString == null)
                 return convertString;
             if (item.DataType == "bit")
                 return (convertString == "1" || convertString.Equals("true",StringComparison.CurrentCultureIgnoreCase)).ToString().ToLower();
